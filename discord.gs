@@ -73,8 +73,19 @@ function sendDiscordImage(name, gazou) {
 //1日のpush上限を超えそうな場合
 function angryDiscord(){
   var webhookURL = "";
+  let angry=["本日分のpush上限になりました。\nちょっとは遠慮してください。",
+             "いい加減にしなさい。もうプッシュ上限ですよ。",
+             "何回言えばいいんだ！！プッシュ上限やぞ！！",
+             "月1000だから警告します！プッシュ上限行きました！！！！！",
+             "プッシュ上限DAAAAAAAAAAAAAAAAAAAAA!!",
+             "HikakinTVでプッシュ上限とか言ったことあんまないけど",
+             "初めてですよ、ここまで私をコケにしたおバカさんたちは、、、、",
+             "初めてですよ、ここまでメッセージプッシュをしたおバカさんたちは、、、、",
+             "ふざけたことを、シグマ！！！！！",
+             "もうキレキレkinですよもう。"];
+  var angmes=angry[Math.floor(Math.random()*angry.length)]
   var options = {
-    "content" : "@everyone 本日分のpush上限になりました。\nちょっとは遠慮してください。"
+    "content" : "@everyone "+angmes
   };
   // データを作って投げる
   var response = UrlFetchApp.fetch(
