@@ -6,6 +6,7 @@ function sendLineMessage(e) {
   console.log(e);
   //送られてきたメッセージに画像がない場合
   if(!e.image){
+    if(e.message==null) return ;
     //テキストメッセージ
     var message = {
       "messages" : [
