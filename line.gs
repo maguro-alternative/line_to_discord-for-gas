@@ -4,7 +4,6 @@
 function sendLineMessage(e) {
   // メッセージの内容(送信先と内容)
   console.log(e);
-  if(e.massage==null) return ;
   //送られてきたメッセージに画像がない場合
   if(!e.image){
     //テキストメッセージ
