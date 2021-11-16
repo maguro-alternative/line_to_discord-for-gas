@@ -28,8 +28,10 @@ function doPost(e) {
   try{
     var events = JSON.parse(e.postData.contents).events;
     //当月分のpushメッセージ数
-    var quota = pushTotal(CHANNEL_ACCESS_TOKEN);
+    var quota = pushTotal();
     var day = new Date();
+    // 今日の日付を表示
+    var today = day.getDate();
     //月末の日にちを取得
     var date = new Date(day.getFullYear(), day.getMonth()+1, 0);
     var endMonth = date.getDate();
@@ -47,12 +49,14 @@ function doPost(e) {
       }else if(event.type == 'discord') {
         //1日に(1000/月末日)件以上送った場合送信しない
         outputLog(quota);
+        outputLog(today);
         outputLog(botFriend);
         outputLog(1000/endMonth);
-        if(quota>1000/endMonth){
-          return ;
+        outputLog((quota+botFriend)/today);
+        if(quota/today>=1000/endMonth){
+          return 0;
         }
-        if(quota+botFriend>1000/endMonth) angryDiscord();
+        if((quota+botFriend)/today>1000/endMonth) angryDiscord();
         sendLineMessage(event);
       }
       //console.log("Devil May Cry");
