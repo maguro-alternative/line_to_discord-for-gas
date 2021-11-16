@@ -1,9 +1,5 @@
 //当月分のプッシュ数を取得し、1日分の上限を定める
 function pushTotal() {
-  //console.log(e);
-  var date = new Date();
-  // 今日の日付を表示
-  var day = date.getDate();
   //利用状況をリクエスト(ついでにパース)
   var quota = JSON.parse(UrlFetchApp.fetch("https://api.line.me/v2/bot/message/quota/consumption", {
       "method": "get",
@@ -14,12 +10,8 @@ function pushTotal() {
   }));
   //outputLog(quota);
   //当月分のプッシュ数を代入
-  var t = quota.totalUsage;
-  outputLog(t);
-  outputLog(day);
-  outputLog(t/day);
-  //outputLog(e);
-  return t/day;
+  outputLog(quota.totalUsage);
+  return quota.totalUsage;
 }
 //友達数を取得する関数
 function friendCount(){
