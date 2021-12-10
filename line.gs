@@ -17,16 +17,96 @@ function sendLineMessage(e) {
       ]
     };
   }else{
+    //var img=e.JSON.parse(image);
+    outputLog("img")
     //画像データ(url)
-    var message = {
-      "messages" : [
-        {
-          "type": "image",
-          "originalContentUrl": e.image,
-          'previewImageUrl': e.image
-        }
-      ]
-    };
+    if(e.imagesize==1){
+      var message = {
+        "messages" : [
+          {
+            "type": "image",
+            "originalContentUrl": e.image,
+            'previewImageUrl': e.image
+          },
+          {
+            "type" : "text",
+            "text" : e.channelname + "にて\n" + e.name + "「"+e.message+"」"
+          }
+        ]
+      };
+    }else if(e.imagesize==2){
+      var message = {
+        "messages" : [
+          {
+            "type": "image",
+            "originalContentUrl": e.image,
+            'previewImageUrl': e.image
+          },
+          {
+            "type": "image",
+            "originalContentUrl": e.image1,
+            'previewImageUrl': e.image1
+          },
+          {
+            "type" : "text",
+            "text" : e.channelname + "にて\n" + e.name + "「"+e.message+"」"
+          }
+        ]
+      };
+    }else if(e.imagesize==3){
+      var message = {
+        "messages" : [
+          {
+            "type": "image",
+            "originalContentUrl": e.image,
+            'previewImageUrl': e.image
+          },
+          {
+            "type": "image",
+            "originalContentUrl": e.image1,
+            'previewImageUrl': e.image1
+          },
+          {
+            "type": "image",
+            "originalContentUrl": e.image2,
+            'previewImageUrl': e.image2
+          },
+          {
+            "type" : "text",
+            "text" : e.channelname + "にて\n" + e.name + "「"+e.message+"」"
+          }
+        ]
+      };
+    }else if(e.imagesize==4){
+      var message = {
+        "messages" : [
+          {
+            "type": "image",
+            "originalContentUrl": e.image,
+            'previewImageUrl': e.image
+          },
+          {
+            "type": "image",
+            "originalContentUrl": e.image1,
+            'previewImageUrl': e.image1
+          },
+          {
+            "type": "image",
+            "originalContentUrl": e.image2,
+            'previewImageUrl': e.image2
+          },
+          {
+            "type": "image",
+            "originalContentUrl": e.image3,
+            'previewImageUrl': e.image3
+          },
+          {
+            "type" : "text",
+            "text" : e.channelname + "にて\n" + e.name + "「"+e.message+"」"
+          }
+        ]
+      };
+    }
   }
   // LINEにpostするメッセージデータ
   var replyData = {
